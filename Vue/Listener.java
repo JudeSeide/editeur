@@ -5,6 +5,7 @@ import Controlleur.Commande;
 import Controlleur.Copier;
 import Controlleur.Couper;
 import Controlleur.Defaire;
+import Controlleur.Enregistrer;
 import Controlleur.Gardien;
 import Controlleur.Inserer;
 import Controlleur.Refaire;
@@ -48,7 +49,7 @@ public class Listener implements KeyListener, ActionListener {
         if (UserInterface.getInstance().isMacro()) {
             commande = new RegistreMacro(commande);
         }
-        
+
         commande.execute();
         UserInterface.getInstance().displayCursor();
         UserInterface.getInstance().setRedo(Gardien.getInstance().hasRedo());
@@ -73,6 +74,9 @@ public class Listener implements KeyListener, ActionListener {
                     break;
                 case KeyEvent.VK_Y:
                     executeCommand(new Refaire());
+                    break;
+                case KeyEvent.VK_S:
+                    executeCommand(new Enregistrer());
                     break;
             }
         } else if (e.isShiftDown()) {

@@ -6,6 +6,7 @@ import Controlleur.Copier;
 import Controlleur.Couper;
 import Controlleur.Defaire;
 import Controlleur.Demarer;
+import Controlleur.Enregistrer;
 import Controlleur.Observer;
 import Controlleur.Refaire;
 import Controlleur.Rejouer;
@@ -93,12 +94,12 @@ public class UserInterface extends javax.swing.JFrame implements Observer {
     public boolean isMacro() {
         return b_macro;
     }
-    
-    public void setUndo(boolean b){
+
+    public void setUndo(boolean b) {
         defaire.setEnabled(b);
     }
-    
-    public void setRedo(boolean b){
+
+    public void setRedo(boolean b) {
         refaire.setEnabled(b);
     }
 
@@ -154,6 +155,10 @@ public class UserInterface extends javax.swing.JFrame implements Observer {
         coller.setText("Coller");
         coller.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK));
 
+        enregistrer = new Enregistrer();
+        enregistrer.setText("Enregistrer");
+        enregistrer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+
         /* Ajouter les choix aux menus  */
         macro.add(demarer).addActionListener(new Listener());
         macro.add(arreter).addActionListener(new Listener());
@@ -166,6 +171,7 @@ public class UserInterface extends javax.swing.JFrame implements Observer {
         edition.add(copier).addActionListener(new Listener());
         edition.add(couper).addActionListener(new Listener());
         edition.add(coller).addActionListener(new Listener());
+        edition.add(enregistrer).addActionListener(new Listener());
 
         /* Inserer le menu macro dans le menu edition */
         edition.addSeparator();
@@ -212,6 +218,7 @@ public class UserInterface extends javax.swing.JFrame implements Observer {
     private JMenuItem copier;
     private JMenuItem couper;
     private JMenuItem coller;
+    private JMenuItem enregistrer;
     private JPanel panneau;
     private JTextArea textArea;
     private Font fonte;
